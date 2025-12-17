@@ -1,0 +1,294 @@
+/* Her er det fult mulig å ta med eller ikke.
+men det er ofte et ønske om å repetere dette med custom variables for deltakerne på dette stadie i kurset og se hvordan det ofte brukes i prosjekter.
+Målet med utforming for denne oppgaven er å bruke mye av det deltakerne har lært tidligere og plasere det inn i et litt mer relevant kontext enn de normalt får i oppgaver og undervisning.
+
+Pseudo elementer er vanskelig å se for seg jeg gir og gjerne og dette er ikke inkludert i dette kodeeksempelet
+og det er bare en rask vise hva before og after gjør ved å legge inn et tekstelement eller en emoji før / etter et element.
+
+Pseudo er og vanskelig å forstå hvordan den brukes på en side og her i eksempelett brukes det veldig aktivt til å lage realistiske elementer i form av underlines.
+
+Det er også greit å gjøre sjekker på andre elementer i koden og sjekke at alle deltakerne husker dem, flex flex between, list styling, form styling osv.
+*/
+:root {
+    /* Colors */
+    /* her bruker jeg hex for forenkling og det deltakere kjenner igjen fra undervisning tidligere,
+  har tidligere prøvd med bruk av OKLCH og RGBA men det tar mye fokus bort fra temaet av undervisningsøkten
+  ettersom deltakere ofte trenger my indepth forklaring for å forstå hvordan oklch spesielt fungerer,
+  det er fint om det er tid samt en fin ting å vise dersom man har tid til å vise media queries for dark mode nettleserinnstilinger dersom man er komfortabel med det*/
+    --color-primary: #5a3825;
+    --color-secondary: #d3b88c;
+    --color-bg: #faf7f2;
+    --color-text: #2a2a2a;
+    --color-text-light: #ffffff;
+    --color-card-odd: #f0e8dd;
+
+    /* Typography */
+    /* Her står dere og fritt til å legge in flere fonter / flere font family custom properties om det ønskes og / eller
+  er tid eller deltaker sliter med forståelse av dette med ikke farge custom props  */
+    --font-family: sans-serif;
+    --font-size-base: 1rem;
+    --font-size-lg: 2rem;
+    --font-size-xl: 3rem;
+
+    /* Her har jeg med vilje brukt samme verdi for flere props for å forklare dette med navngivning,
+  hadde man brukt fontsize på spacing så hadde det vært forvirrende senere i koden.
+  Alternative er å lage sm / md / lg verdier men det låser enn da ut av å bruke disse senere til annet.
+  Navn skal være beskrivende.
+  /* spacing */
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+
+    /* Border radius */
+    --radius-sm: 5px;
+    --radius-md: 10px;
+}
+
+/* ordinær reset og global properties*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+header {
+    background: var(--color-primary);
+    color: var(--color-text-light);
+    padding: var(--spacing-sm) var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* bruken av pseudo selectors her er mest for grunnen av at de skal lære det,
+her kunne man bare brukt ul som selector men vi bruker nav ul,
+og bruker argumentet at kanskje vi skal ha en ul senere som skal se annerledes ut og
+gjør det på denne måten for å sikre oss hvilken ul som targetes. */
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+nav a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    position: relative;
+    font-weight: bold;
+}
+
+/* her går jeg hardt ut med å kombinere pseudo elementer / klasser sammtidig,
+jeg viser og den første altså nav a::after med en width åp 100% før jeg gjør den til 0 og legger til hover effekt
+
+Dette eksempelet skal noenlunde repeteres delvis to ganger til ila prosjektet
+
+Viktig å spørre om dette med position absolute / relativ, ettersom deltakere ofte stusser på dette,
+det er og en fin måte å vise interaksjon mellom det ordinære elementet og pseudoelementet
+*/
+
+nav a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--color-secondary);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.hero {
+    background: url("https://images.unsplash.com/photo-1510626176961-4b57d4fbad03")
+        center/cover no-repeat;
+    color: var(--color-text-light);
+    text-align: center;
+    padding: var(--spacing-lg) var(--spacing-md);
+}
+
+.hero h2 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-sm);
+}
+
+.hero h2::after {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 5rem;
+    background: var(--color-secondary);
+    margin: 0.5rem auto 0;
+}
+
+.btn {
+    background: var(--color-secondary);
+    color: var(--color-text);
+    padding: var(--spacing-sm) var(--spacing-md);
+    display: inline-block;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.5s ease;
+}
+
+.btn:hover {
+    background: #f0dcb8;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+section {
+    padding: var(--spacing-lg) var(--spacing-md);
+    text-align: center;
+}
+
+section h2 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-md);
+    position: relative;
+}
+
+section h2::after {
+    content: "";
+    width: 4rem;
+    height: 0.2rem;
+    background: var(--color-primary);
+    display: block;
+    margin: 0.5rem auto 0;
+}
+
+.coffee-items {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.coffee-card {
+    width: 20rem;
+    background: var(--color-secondary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm);
+    text-align: left;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px black;
+}
+
+/* her er det fint mulig å leke seg for å vise hva nth-child har mulighet for,
+her er noen eksempler som fungerer med den nåværende html strukturen;
+(odd), (even), (1), (2), (3), (n - 2), (n + 2) */
+
+.coffee-card:nth-child(odd) {
+    background: var(--color-card-odd);
+}
+
+.coffee-card:hover {
+    transform: translateY(-0.4rem);
+    box-shadow: 0 4px 8px black;
+}
+
+form {
+    max-width: 35rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+input,
+textarea {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: var(--radius-sm);
+}
+
+input:focus,
+textarea:focus {
+    outline: 2px solid var(--color-secondary);
+}
+
+footer {
+    background: var(--color-primary);
+    color: var(--color-text-light);
+    text-align: center;
+    padding: var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+}
+
+button {
+    border: none;
+}
+
+/* starter med en satt media query for skjermstørrelse, her er det viktig å forklare hvordan en media querys elementer inheritter verdier. */
+
+@media (max-width: 770px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .coffee-item {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        align-items: center;
+    }
+
+    .hero {
+        padding: var(--spacing-md);
+    }
+}
+
+/*hvordan man kombinerer to queries (logical and fra javascrip if both true do this) samt hvordan man separerer mobil widescreen fra tablet / desktop zoomed or narrow
+orientation verdien kan leses mer om her: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/orientation */
+
+@media (max-width: 770px) and (orientation: landscape) {
+    /* your code here */
+}
+
+/* her velger man det man synes passer best å bruke, jeg foretrekker bruke disse to instillingene for å vise prefers media queries */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg: #1a1a1a;
+        --color-text: #fff;
+    }
+    /* her kan man skifte på teksten der det overlapper for å fikse kontrastkonflikten som oppstår over */
+    .coffee-items h3,
+    .coffee-items p {
+        color: #1a1a1a;
+    }
+}
+
+/* fortelle om accessability options litt, og hvordan man respekterer brukeren av siden sin, dersom de ikke ønsker se noe skal de ikke trenge se det
+Kan også legges ved hva !Important gjør for noe (ignorerer specificity) */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: none !important;
+        transform: none !important;
+    }
+}

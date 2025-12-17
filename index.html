@@ -1,0 +1,82 @@
+<!-- Det overordna målet for økten er å gi deltaker innsyn i
+pseudo elementer, klasser og selectorer samt innføring i enkle media queries, hovedsaklig for skjermstørrelser
+Deltaker har også til dette punktet ikke laget fulle produkter og dette er ett forsøk på å
+implementere / repetere tidligere temaer med de nye til å lage ett noenlunde totalt produkt for at deltakerne skal se undervisningen i lys av faktisk arbeidssituasjon.
+Håper er at deltaker skal føle og se at ved å kombinere det de kan, faktisk kan lage fulle hele sider.-->
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <!-- del 1, her går jeg gjennom og lager hele header html elementet før jeg starter med CSS,
+jeg med vilje legger ikke på klasser slik at jeg har muligheten til å legge inn styling med bruk av pseudo selectors
+om jeg skulle ønske det senere heller enn å bruke klasser og vise hvordan man kan gjøre dette like effektivt
+emmet for header: header>h1{Bean Haven}+nav>ul>li*5>a[href="#"] -->
+        <header>
+            <h1>Bean Haven</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Our Coffee</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!--Her lager man en section av gangen før man styler hver av dem med css
+man lager altså heroen først så styler man den for så å bygge og style our-coffee sectionen,
+gjør det samme med contact section til slutt
+emmet for sections section.hero>h2+p -->
+
+        <main>
+            <section class="hero">
+                <h2>Welcome to Bean Haven</h2>
+                <p>Your cozy corner for fresh brews and good vibes.</p>
+                <a href="#our-coffee" class="btn">Explore Our Coffee</a>
+            </section>
+
+            <section id="our-coffee">
+                <h2>Our Coffee</h2>
+                <p>Hand-picked beans, roasted with passion.</p>
+
+                <!-- coffee items emmet: div.coffe-items>article.coffee-card*3>h3+p -->
+                <div class="coffee-items">
+                    <article class="coffee-card">
+                        <h3>Espresso</h3>
+                        <p>Bold, rich, perfect for kick-starting your day.</p>
+                    </article>
+
+                    <article class="coffee-card">
+                        <h3>Latte</h3>
+                        <p>Smooth espresso with creamy milk foam.</p>
+                    </article>
+
+                    <article class="coffee-card">
+                        <h3>Cappuccino</h3>
+                        <p>A balanced blend of espresso and milk foam.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2>Contact Us</h2>
+                <p>Got questions? We’re all ears.</p>
+
+                <form>
+                    <input type="text" placeholder="Your name" required />
+                    <input type="email" placeholder="Email address" required />
+                    <textarea rows="4" placeholder="Your message"></textarea>
+                    <button class="btn">Send Message</button>
+                </form>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Bean Haven Coffee Shop</p>
+        </footer>
+    </body>
+</html>
