@@ -1,22 +1,39 @@
-<!-- Det overordna målet for økten er å gi deltaker innsyn i
-pseudo elementer, klasser og selectorer samt innføring i enkle media queries, hovedsaklig for skjermstørrelser
-Deltaker har også til dette punktet ikke laget fulle produkter og dette er ett forsøk på å
-implementere / repetere tidligere temaer med de nye til å lage ett noenlunde totalt produkt for at deltakerne skal se undervisningen i lys av faktisk arbeidssituasjon.
-Håper er at deltaker skal føle og se at ved å kombinere det de kan, faktisk kan lage fulle hele sider.-->
+<!--
+Det overordnede målet for denne økten er å gi deltakerne innblikk i:
+- pseudo-elementer, klasser og selektorer
+- enkle media queries (hovedsakelig basert på skjermstørrelse)
+
+På dette tidspunktet har deltakerne ofte jobbet med små, isolerte oppgaver,
+men ikke nødvendigvis bygget komplette sider.
+Dette oppsettet er derfor ment som en bro mellom tidligere temaer og mer
+realistisk prosjektarbeid.
+
+Målet er at deltakerne skal oppleve at ved å kombinere det de allerede kan,
+kan de faktisk bygge en hel, sammenhengende nettside – slik man gjør i
+arbeidslivet.
+-->
 
 <!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>Bean Haven</title>
         <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
-        <!-- del 1, her går jeg gjennom og lager hele header html elementet før jeg starter med CSS,
-jeg med vilje legger ikke på klasser slik at jeg har muligheten til å legge inn styling med bruk av pseudo selectors
-om jeg skulle ønske det senere heller enn å bruke klasser og vise hvordan man kan gjøre dette like effektivt
-emmet for header: header>h1{Bean Haven}+nav>ul>li*5>a[href="#"] -->
+        <!--
+        DEL 1 – HEADER
+        Her bygges hele header-strukturen ferdig før styling.
+        Det brukes bevisst få klasser her, slik at man kan demonstrere
+        styling med element- og pseudo-selektorer senere.
+
+        Dette gjør det mulig å vise at man ikke alltid er avhengig av klasser
+        for å oppnå presis styling.
+
+        Emmet:
+        header>h1{Bean Haven}+nav>ul>li*3>a[href="#"]
+        -->
         <header>
             <h1>Bean Haven</h1>
             <nav>
@@ -27,11 +44,20 @@ emmet for header: header>h1{Bean Haven}+nav>ul>li*5>a[href="#"] -->
                 </ul>
             </nav>
         </header>
-        <!--Her lager man en section av gangen før man styler hver av dem med css
-man lager altså heroen først så styler man den for så å bygge og style our-coffee sectionen,
-gjør det samme med contact section til slutt
-emmet for sections section.hero>h2+p -->
 
+        <!--
+        HOVEDINNHOLD
+        Seksjonene bygges én og én:
+        1. Hero
+        2. Our Coffee
+        3. Contact
+
+        Tanken er å først lage HTML-strukturen,
+        deretter style hver seksjon ferdig i CSS før man går videre.
+
+        Emmet (hero):
+        section.hero>h2+p+a[href="#our-coffee"].btn
+        -->
         <main>
             <section class="hero">
                 <h2>Welcome to Bean Haven</h2>
@@ -39,11 +65,20 @@ emmet for sections section.hero>h2+p -->
                 <a href="#our-coffee" class="btn">Explore Our Coffee</a>
             </section>
 
+            <!--
+            OUR COFFEE
+            Denne seksjonen brukes aktivt i CSS til å demonstrere:
+            - flexbox
+            - nth-child
+            - kortbasert layout
+
+            Emmet:
+            section#our-coffee>h2+p+div.coffee-items>article.coffee-card*3>h3+p
+            -->
             <section id="our-coffee">
                 <h2>Our Coffee</h2>
                 <p>Hand-picked beans, roasted with passion.</p>
 
-                <!-- coffee items emmet: div.coffe-items>article.coffee-card*3>h3+p -->
                 <div class="coffee-items">
                     <article class="coffee-card">
                         <h3>Espresso</h3>
@@ -62,6 +97,13 @@ emmet for sections section.hero>h2+p -->
                 </div>
             </section>
 
+            <!--
+            CONTACT
+            Brukes til å repetere:
+            - form-elementer
+            - input, textarea og button
+            - fokus-styling og tilgjengelighet
+            -->
             <section id="contact">
                 <h2>Contact Us</h2>
                 <p>Got questions? We’re all ears.</p>
@@ -75,6 +117,12 @@ emmet for sections section.hero>h2+p -->
             </section>
         </main>
 
+        <!--
+        FOOTER
+        Enkel avslutning på siden.
+        God plass å snakke om semantiske HTML-elementer
+        og hvorfor footer brukes fremfor div.
+        -->
         <footer>
             <p>&copy; 2025 Bean Haven Coffee Shop</p>
         </footer>

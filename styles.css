@@ -1,20 +1,30 @@
-/* Her er det fult mulig å ta med eller ikke.
-men det er ofte et ønske om å repetere dette med custom variables for deltakerne på dette stadie i kurset og se hvordan det ofte brukes i prosjekter.
-Målet med utforming for denne oppgaven er å bruke mye av det deltakerne har lært tidligere og plasere det inn i et litt mer relevant kontext enn de normalt får i oppgaver og undervisning.
+/*
+Denne delen kan enten inkluderes eller utelates.
+I praksis er det ofte nyttig å repetere custom properties (CSS-variabler)
+på dette stadiet i kurset, og vise hvordan de faktisk brukes i reelle prosjekter.
 
-Pseudo elementer er vanskelig å se for seg jeg gir og gjerne og dette er ikke inkludert i dette kodeeksempelet
-og det er bare en rask vise hva before og after gjør ved å legge inn et tekstelement eller en emoji før / etter et element.
+Målet med oppgaven er å gjenbruke mest mulig av det deltakerne allerede har lært,
+og plassere det inn i en mer realistisk og helhetlig kontekst enn mange tradisjonelle oppgaver.
 
-Pseudo er og vanskelig å forstå hvordan den brukes på en side og her i eksempelett brukes det veldig aktivt til å lage realistiske elementer i form av underlines.
+Pseudo-elementer er ofte abstrakte og vanskelige å visualisere.
+Derfor brukes de her bevisst til å legge inn tekst/emoji før eller etter elementer,
+og senere til å lage mer realistiske UI-detaljer som underlinjer.
 
-Det er også greit å gjøre sjekker på andre elementer i koden og sjekke at alle deltakerne husker dem, flex flex between, list styling, form styling osv.
+Det er også hensiktsmessig å bruke anledningen til å sjekke om deltakerne
+husker andre sentrale konsepter, som flexbox (space-between), list-styling,
+form-styling osv.
 */
+
 :root {
-    /* Colors */
-    /* her bruker jeg hex for forenkling og det deltakere kjenner igjen fra undervisning tidligere,
-  har tidligere prøvd med bruk av OKLCH og RGBA men det tar mye fokus bort fra temaet av undervisningsøkten
-  ettersom deltakere ofte trenger my indepth forklaring for å forstå hvordan oklch spesielt fungerer,
-  det er fint om det er tid samt en fin ting å vise dersom man har tid til å vise media queries for dark mode nettleserinnstilinger dersom man er komfortabel med det*/
+    /*
+    Farger
+    Her brukes hex-verdier fordi dette er kjent for deltakerne fra tidligere undervisning.
+    Mer avanserte fargeformater som OKLCH og RGBA kan fort ta fokus bort fra hovedtemaet,
+    siden de krever en del forklaring – spesielt OKLCH.
+
+    Disse kan eventuelt tas opp senere, for eksempel i kombinasjon med media queries
+    og dark mode, dersom man har tid og deltakerne er klare for det.
+    */
     --color-primary: #5a3825;
     --color-secondary: #d3b88c;
     --color-bg: #faf7f2;
@@ -22,19 +32,26 @@ Det er også greit å gjøre sjekker på andre elementer i koden og sjekke at al
     --color-text-light: #ffffff;
     --color-card-odd: #f0e8dd;
 
-    /* Typography */
-    /* Her står dere og fritt til å legge in flere fonter / flere font family custom properties om det ønskes og / eller
-  er tid eller deltaker sliter med forståelse av dette med ikke farge custom props  */
+    /*
+    Typografi
+    Det er helt greit å legge til flere fonter eller egne font-variabler
+    dersom det er ønskelig, tid til det, eller deltakerne trenger mer øving
+    på custom properties som ikke er relatert til farger.
+    */
     --font-family: sans-serif;
     --font-size-base: 1rem;
     --font-size-lg: 2rem;
     --font-size-xl: 3rem;
 
-    /* Her har jeg med vilje brukt samme verdi for flere props for å forklare dette med navngivning,
-  hadde man brukt fontsize på spacing så hadde det vært forvirrende senere i koden.
-  Alternative er å lage sm / md / lg verdier men det låser enn da ut av å bruke disse senere til annet.
-  Navn skal være beskrivende.
-  /* spacing */
+    /*
+    Spacing
+    Her brukes bevisst samme verdi flere steder for å forklare viktigheten av
+    god navngivning. Å bruke f.eks. font-size-variabler til spacing ville blitt
+    forvirrende senere i koden.
+
+    Et alternativ er sm/md/lg-betegnelser, men disse kan bli for generelle
+    og mindre fleksible over tid.
+    */
     --spacing-sm: 1rem;
     --spacing-md: 2rem;
     --spacing-lg: 3rem;
@@ -44,7 +61,7 @@ Det er også greit å gjøre sjekker på andre elementer i koden og sjekke at al
     --radius-md: 10px;
 }
 
-/* ordinær reset og global properties*/
+/* Enkel reset og globale standardverdier */
 * {
     margin: 0;
     padding: 0;
@@ -68,11 +85,12 @@ header {
     align-items: center;
 }
 
-/* bruken av pseudo selectors her er mest for grunnen av at de skal lære det,
-her kunne man bare brukt ul som selector men vi bruker nav ul,
-og bruker argumentet at kanskje vi skal ha en ul senere som skal se annerledes ut og
-gjør det på denne måten for å sikre oss hvilken ul som targetes. */
-
+/*
+Her brukes nav ul som selector i stedet for bare ul.
+Dette er mest for pedagogikkens skyld – vi antar at vi senere
+kan ha andre lister på siden som skal styles annerledes.
+Slik sikrer vi at riktig liste blir påvirket.
+*/
 nav ul {
     list-style: none;
     display: flex;
@@ -86,15 +104,18 @@ nav a {
     font-weight: bold;
 }
 
-/* her går jeg hardt ut med å kombinere pseudo elementer / klasser sammtidig,
-jeg viser og den første altså nav a::after med en width åp 100% før jeg gjør den til 0 og legger til hover effekt
+/*
+Her kombineres klasser, pseudo-elementer og hover-effekter.
+Det er nyttig å først vise ::after med width: 100%,
+før man setter den til 0 og legger til animasjon på hover.
 
-Dette eksempelet skal noenlunde repeteres delvis to ganger til ila prosjektet
+Dette mønsteret repeteres senere i prosjektet.
 
-Viktig å spørre om dette med position absolute / relativ, ettersom deltakere ofte stusser på dette,
-det er og en fin måte å vise interaksjon mellom det ordinære elementet og pseudoelementet
+Det er viktig å stoppe opp ved position: relative / absolute,
+da dette ofte er et punkt mange deltakere synes er vanskelig.
+Dette er også et godt eksempel på samspillet mellom et element
+og pseudo-elementet som tilhører det.
 */
-
 nav a::after {
     content: "";
     position: absolute;
@@ -123,6 +144,7 @@ nav a:hover::after {
     margin-bottom: var(--spacing-sm);
 }
 
+/* Pseudo-element brukt for å lage en visuell understrek */
 .hero h2::after {
     content: "";
     display: block;
@@ -147,6 +169,7 @@ nav a:hover::after {
     background: #f0dcb8;
 }
 
+/* Aktiv-tilstand for å gi tydelig feedback */
 .btn:active {
     transform: scale(0.95);
 }
@@ -162,6 +185,7 @@ section h2 {
     position: relative;
 }
 
+/* Samme pseudo-element-teknikk brukt igjen for repetisjon */
 section h2::after {
     content: "";
     width: 4rem;
@@ -190,10 +214,11 @@ section h2::after {
     box-shadow: 0 2px 4px black;
 }
 
-/* her er det fint mulig å leke seg for å vise hva nth-child har mulighet for,
-her er noen eksempler som fungerer med den nåværende html strukturen;
-(odd), (even), (1), (2), (3), (n - 2), (n + 2) */
-
+/*
+Her er det rom for å demonstrere hva nth-child kan brukes til.
+Eksempler som fungerer med nåværende HTML-struktur:
+(odd), (even), (1), (2), (3), (n - 2), (n + 2)
+*/
 .coffee-card:nth-child(odd) {
     background: var(--color-card-odd);
 }
@@ -218,6 +243,7 @@ textarea {
     border-radius: var(--radius-sm);
 }
 
+/* Fokus-styling er viktig for tilgjengelighet */
 input:focus,
 textarea:focus {
     outline: 2px solid var(--color-secondary);
@@ -235,8 +261,11 @@ button {
     border: none;
 }
 
-/* starter med en satt media query for skjermstørrelse, her er det viktig å forklare hvordan en media querys elementer inheritter verdier. */
-
+/*
+Fast breakpoint for mindre skjermer.
+Her er det viktig å forklare at elementene arver verdier
+og at vi kun overstyrer det som faktisk må endres.
+*/
 @media (max-width: 770px) {
     header {
         flex-direction: column;
@@ -260,30 +289,42 @@ button {
     }
 }
 
-/*hvordan man kombinerer to queries (logical and fra javascrip if both true do this) samt hvordan man separerer mobil widescreen fra tablet / desktop zoomed or narrow
-orientation verdien kan leses mer om her: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/orientation */
+/*
+Eksempel på kombinerte media queries (logical AND).
+Kan sammenlignes med if (a && b) i JavaScript.
 
+Dette brukes for å skille mellom mobil i landscape
+og større skjermer som er smale eller zoomet.
+*/
 @media (max-width: 770px) and (orientation: landscape) {
-    /* your code here */
+    /* eventuell tilpasning her */
 }
 
-/* her velger man det man synes passer best å bruke, jeg foretrekker bruke disse to instillingene for å vise prefers media queries */
-
+/*
+Eksempel på prefers media queries.
+Viser hvordan man kan tilpasse design basert på brukerens
+systeminnstillinger.
+*/
 @media (prefers-color-scheme: dark) {
     :root {
         --color-bg: #1a1a1a;
         --color-text: #fff;
     }
-    /* her kan man skifte på teksten der det overlapper for å fikse kontrastkonflikten som oppstår over */
+
+    /* Justerer tekstfarge der kontrasten ellers blir for dårlig */
     .coffee-items h3,
     .coffee-items p {
         color: #1a1a1a;
     }
 }
 
-/* fortelle om accessability options litt, og hvordan man respekterer brukeren av siden sin, dersom de ikke ønsker se noe skal de ikke trenge se det
-Kan også legges ved hva !Important gjør for noe (ignorerer specificity) */
+/*
+Tilgjengelighet: respekter brukere som har slått av animasjoner.
+De skal slippe å se bevegelser de aktivt har valgt bort.
 
+Her kan man også forklare hva !important gjør
+(den overstyrer vanlig specificity).
+*/
 @media (prefers-reduced-motion: reduce) {
     * {
         animation: none !important;
