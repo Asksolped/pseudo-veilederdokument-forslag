@@ -136,8 +136,8 @@ nav a:hover::after {
     width: 100%;
 }
 
-/* Dersom bildet ikke lenger ligger opplastet kan alltids siden https://picsum.photos brukes med følgende link i background url
-https://picsum.photos/600/900 */
+/* Dersom bildet ikke lenger ligger opplastet kan alltids siden picsum.photos brukes med følgende link i background url
+https://picsum.photos/600/900 dette vil gi ett tilfeldig bilde fra deres database som en placeholder av spesifiserte dimensjoner */
 
 .hero {
     background: url("https://images.unsplash.com/photo-1510626176961-4b57d4fbad03")
